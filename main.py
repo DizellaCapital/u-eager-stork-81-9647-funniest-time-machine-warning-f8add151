@@ -27,6 +27,8 @@ def main():
         return fail("entry must not contain tabs")
     if not text.strip():
         return fail("entry must not be only whitespace")
+    if text != text.strip():
+        return fail("entry must not have leading or trailing whitespace")
     target_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(target_dir, exist_ok=True)
     target = os.path.join(target_dir, "entry.txt")
